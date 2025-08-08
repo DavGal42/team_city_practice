@@ -6,7 +6,7 @@ import jetbrains.buildServer.configs.kotlin.project
 import jetbrains.buildServer.configs.kotlin.BuildType
 
 object Project : Project({
-    name = "HelloWorldProject"
+    name = "TeamCityPractice"
 
     buildType(HelloWorldBuild)
 })
