@@ -1,27 +1,22 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
-version = "2022.10"
+version = "2024.03"
 
 project {
-    buildType(BuildAndDockerize)
+    name = "TeamCityPractice"
+
+    buildType(BuildHelloWorld)
 }
 
-object BuildAndDockerize : BuildType({
-    name = "Build and Dockerize"
-
-    vcs {
-        root(DslContext.settingsRoot)
-    }
+object BuildHelloWorld : BuildType({
+    name = "Hello World Build"
 
     steps {
         script {
-            name = "Say hello"
-            scriptContent = "echo 'Building app...'"
+            name = "Print Hello World"
+            scriptContent = """echo "hello world""""
         }
-
-    triggers {
-        vcs {}
     }
 })
 
