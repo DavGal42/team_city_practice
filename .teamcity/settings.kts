@@ -1,16 +1,29 @@
+package _Self.buildTypes
+
 import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
-version = "2025.07"
+object Build : BuildType({
+    name = "Build"
 
-project {
-  buildType {
-    id("HelloWorld")
-    name = "Hello world"
-    steps {
-        script {
-            scriptContent = "echo 'Hello world!'"
+    vcs {
+        root(HttpsGithubComDavGal42teamCityPracticeGitRefsHeadsMain)
+    }
+steps {
+    script {
+        id = "simpleRunner"
+        scriptContent = """echo "hello world""""
+    }
+}
+    triggers {
+        vcs {
         }
     }
-  }
-}
+
+    features {
+        perfmon {
+        }
+    }
+})
