@@ -1,22 +1,16 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 
-version = "2024.03"
+version = "2025.07"
 
 project {
-    name = "TeamCityPractice"
-
-    buildType(BuildHelloWorld)
-}
-
-object BuildHelloWorld : BuildType({
-    name = "Hello World Build"
-
+  buildType {
+    id("HelloWorld")
+    name = "Hello world"
     steps {
         script {
-            name = "Print Hello World"
-            scriptContent = """echo "hello world""""
+            scriptContent = "echo 'Hello world!'"
         }
     }
-})
-
+  }
+}
